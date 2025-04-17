@@ -22,17 +22,18 @@
 // },1000)
 // console.log(__dirname);
 // console.log(__filename);
-function sayhi(){
-    console.log("hi");
+// function sayhi(){
+//     console.log("hi");
     
-}
-var saybye = function(baisunyu){
-    console.log(baisunyu+":bye");
+// }
+// var saybye = function(baisunyu){
+//     console.log(baisunyu+":bye");
     
-}
- function callFunction(callback,baisunyu){
-    callback(baisunyu)
-}
-// saybye();
-// sayhi();
-callFunction(saybye,"iwen")
+// }
+//  function callFunction(callback,baisunyu){
+//     callback(baisunyu)
+// }
+// // saybye();
+// // sayhi();
+// callFunction(saybye,"iwen")
+console.log("Hello Wrold");
