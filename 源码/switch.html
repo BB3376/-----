@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+        .switch{
+            height: 1.4rem;
+            width: 3rem;
+            position: relative;
+
+        }
+       
+
+        .switch > label{
+            background: #bbb;
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            border-radius: 1rem;
+        }
+        .switch > label::after{
+            top: 0.07rem;
+            content: "";
+            left: 0.12rem;
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            background: white;
+            position: absolute;
+            transition: left, 0.3s;
+        }
+        .switch >input:checked + label{
+            background: rgb(32, 123, 241);
+        }
+        .switch >input:checked + label::after{
+            left: 1.6rem;
+        }
+    </style> -->
+<style>
+    :root{
+        --button-wideth:500px;
+        --button-height:295px;
+        --toggle-diameter:255px;
+        --button-toggle-offset:calc((var(--button-height) - var(--toggle-diameter))/2);
+    --toggle-shadow-offset:10px;
+    --toggle-wider:333px;
+    --color-dark-grey:#39393D;
+    --color-grey:#E9E9E9;
+    --color-green:#30D158;
+    }
+    span{
+        display: inline-block;
+        width: var(--button-wideth);
+        height: var(--button-height);
+        background-color: var(--color-grey);
+        border-radius: calc(var(--button-height) / 2);
+        position: relative;
+        transition: .4s all ease-in-out;
+    }
+    span::after{
+        content: "";
+        display: inline-block;
+        width: var(--toggle-diameter);
+        height: var(--toggle-diameter);
+        background-color: #fff;
+        position: absolute;
+        border-radius: calc(var(--toggle-diameter)/2);
+        top: var(--button-toggle-offset);
+        transform:translateX(var(--button-toggle-offset)) ;
+    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset)*4) rgba(0, 0, 0, .10);
+    transition: .4s all ease-in-out;
+}
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+    }
+    input[type="checkbox"]:checked + span {
+        background-color: var(--color-green);
+    }
+    input[type="checkbox"]:checked + span::after{
+        transform: translateX(calc(var(--button-wideth) - var(--toggle-diameter) - var(--button-toggle-offset)));
+        box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset)*4) rgba(0, 0, 0, .10);
+    }
+    input[type="checkbox"]{
+        display: none;
+    }
+    input[type="checkbox"]:active + span::after{
+        width: var(--toggle-wider);
+    }
+    input[type="checkbox"]:checked:active + span::after{
+        transform: translateX(calc(var(--button-wideth) - var(--toggle-wider)- var(--button-toggle-offset)));
+    }
+    /* @media(prefers-color-scheme: dark) {
+        body{
+            background-color: #1C1C1E;
+        }
+        span{
+            background-color:var(--color-dark-grey) ;
+        }
+    } */
+</style>
+
+</head>
+<body>
+    <!-- <div class="switch">
+        <input type="checkbox" id="switch">
+        <label for="switch"></label>
+    </div> -->
+<label for="toggle">
+    <input type="checkbox" id="toggle">
+    <span></span>
+</label>
+</body>
+</html>

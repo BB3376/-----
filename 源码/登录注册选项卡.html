@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+      .tab_con{
+        width: 300px;
+        height: 350px;
+       margin: 50px auto 0;
+      }
+      .tab_btns{
+        height: 50px;
+        display: flex;
+       flex-direction: column;
+      }
+      .tab_btns input{
+        flex-direction: row;
+        width: 100px;
+        height: 50px;
+        background: rgba( 255, 255, 255, 0 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2px );
+-webkit-backdrop-filter: blur( 2px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+        border: 0px;
+        outline: none;
+      }
+      .tab_btns .active{
+        background: rgba( 255, 255, 255, 0 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2px );
+-webkit-backdrop-filter: blur( 2px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+       
+      }
+      .tab_cons{
+        position: relative;
+       color: white;
+        height: 300px;
+        background: rgba( 255, 255, 255, 0 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2px );
+-webkit-backdrop-filter: blur( 2px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+        
+      }
+      .tab_cons div{
+        height: 300px;
+       
+        display: none;
+      }
+      .tab_cons .current{
+        display: block;
+      }
+      .aa{
+      font-size: large;
+padding-left: 25px;
+color: white;
+      }
+      .aa input{
+        width: 200px;
+        height: 30px;
+        border: 1px solid #000;
+        margin-top: 10px;
+        margin-bottom: 10px;
+     
+
+      }
+      .aa button{
+        background: transparent;
+        color: white;
+        border-radius: 2px;
+        width: 80px;
+        height: 30px;
+       border: 1px solid white;
+        padding: 5px 10px;
+      
+      }
+      #cc{
+        position: relative;
+        left: 40px;
+      }
+      #bb{
+        position: relative;
+        left: 35px;
+      }
+      .cb{
+        margin-left: 4px;
+      }
+ 
+      </style>
+</head>
+<body>
+    
+      <div id="app">
+        <div class="tab_con">
+          <div class="tab_btns">
+        <div><input type="button" value="登录" :class="{active:num==1}" @click="num=1" id="cc">
+          <input type="button" value="注册" :class="{active:num==2}" @click="num=2" id="bb"></div>
+      
+        </div>
+          <div class="tab_cons">
+            <div :class="{current:num==1}">
+              <span class="aa">  账号: <input type="text" placeholder="请输入账号" ></span><br>
+              <span class="aa">  密码: <input type="password" placeholder="请输入密码"></span><br>
+                <span class="aa">  <button>登录</button></span>
+            </div>
+            <div :class="{current:num==2}">
+              <span class="aa">   账号: <input type="text" placeholder="请输入账号"></span><br>
+                <span class="aa">  密码: <input type="password" placeholder="请输入密码"></span><br>
+                  <span class="aa cb">  邮箱:<input type="email" placeholder="请输入邮箱"></span><br>
+                    <span class="aa">    <button>注册</button></span>
+            </div>
+          
+        </div>
+        
+       </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+num:1
+            },
+           
+            
+        })
+</script>
+</body>
+</html>

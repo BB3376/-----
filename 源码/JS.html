@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+       .stack-container {
+            max-width: 600px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+       .card {
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+       .sticky-card {
+            position: sticky;
+            top: 20px;
+            background-color: #f0f0f0;
+            z-index: 2;
+        }
+
+       .card:nth-child(1) {
+            background-color: #ffcccc;
+        }
+
+       .card:nth-child(2) {
+            background-color: #ccffcc;
+        }
+
+       .card:nth-child(3) {
+            background-color: #ccccff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stack-container">
+        <div class="card">
+            <h2>卡片 1</h2>
+            <p>这是卡片 1 的内容。</p>
+        </div>
+        <div class="card sticky-card">
+            <h2>粘性卡片</h2>
+            <p>这个卡片会在滚动时进行粘性定位。</p>
+        </div>
+        <div class="card">
+            <h2>卡片 2</h2>
+            <p>这是卡片 2 的内容。</p>
+        </div>
+    </div>
+</body>
+
+</html>   

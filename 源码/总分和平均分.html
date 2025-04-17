@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<style>
+	td{
+		padding: 5px;
+	}
+	table{
+		border: 1px solid #000;
+		border-collapse: collapse;
+		margin: 10px;
+	}
+	body{
+		color: #000;
+	}
+	th{
+		background-color: antiquewhite;
+		text-align: center;
+	
+	}
+.ppp td{
+	text-align: center;
+
+
+}
+.del{
+	color: blue;
+	text-decoration: underline;
+}
+tfoot td{
+	padding: 15px 130px;
+}
+.dfdf{
+	margin-right: 15px;
+}
+.ddfd{
+	margin-left:15px ;
+}
+.rt{
+	text-align: center;
+	padding: 50px 150px;
+}
+.input{
+	float: left;
+}
+.label{
+float: left;
+}
+.labels{
+	float: left;
+	margin-left: 10px;
+}
+.inputs{
+	float: left;
+	
+}
+input{
+	padding: 2px 5px;
+}
+.anniu{
+	clear: left;
+	color: white;
+	
+}
+.tij{
+color: white;
+padding: 5px 20px;
+font-size: 10px;
+margin: 20px;
+
+}
+.red{
+	color: red;
+}
+</style>
+</head>
+
+<body>
+<div id="app">
+	<table border="1">
+		<thead>
+		<tr>
+			<th>编号</th>
+			<th>科目</th>
+			<th>成绩</th>
+			<th>操作</th>
+		
+		</tr>
+	</thead>
+	<!-- 
+	当页面出现两个相互排斥的模板就可以用到v-if和v-else，
+	 我们来看这句话如果数组长度大于0就显示，
+	 如果等于0就不显示，会显示v-else选中的模块
+	-->
+	
+	<tbody v-if="list.length > 0 " class="ppp">
+		<tr v-for="(item,index) in list" :key="item.id">
+			<td>{{index + 1}}</td>
+			<td>{{item.subject}}</td>
+			<td :style="{color: item.score < 60 ? 'red':'blue'}">{{item.score}}</td>
+			<!-- <td :class="{red:item.score<60}">{{item.score}}</td> 两种写法，我推荐上面的-->
+			<td ><a @click.prevent="del(item.id)" href="#">删除</a></td>
+	</tr>	
+	</tbody>
+		<tbody v-else>
+<td class="rt" colspan="4">
+	暂无数据
+</td>
+		</tbody>
+		<tfoot>
+		<td colspan="4"><span class="dfdf">总分:{{TGP}}</span><span class="ddfd">平均分:{{GTP}}</span></td>	
+	</tfoot>
+	</table>
+	<div class="form">
+		<div class="form-item">
+			<div class="label">科目：</div>
+			<div class="input">
+				<input type="text" 
+				placeholder="请输入科目"
+				v-model.trim="subject">
+				<!--v-model用来绑定表单控件，
+				当我们在科目输入框中输入科目是可以渲染页面的，分数同理-->
+			</div>
+			<div class="form-items">
+				<div class="labels">分数：</div>
+				<div class="inputs">
+					<input type="number"
+					 placeholder="请输入数字"
+					v-model.number="score" >
+				</div>
+			</div>
+		</div>
+		<div class="anniu">
+			<!--@cilck是注册点击事件，事件名是add，
+			因为我们在输入框输入该输入的东西时是要提交的，
+			所以add的作用是添加，方法写在methobds里面了-->
+			<input @click="add" class="tij" type="submit" style="background-color: rgb(15, 96, 167);">   <input class="tij"  type="reset" style="background-color: red;">
+		</div>
+	</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+	<script>
+const app = new Vue({
+				
+el:'#app',
+				data: {
+				list:[
+					{id:1,subject:'英语',score:25},
+					{id:12,subject:'数学',score:65},
+					{id:13,subject:'语文',score:95},
+				],
+				subject:'',
+				score:'',
+				},
+				methods:{
+					del(id){
+						//删除和过滤用filter，
+						// item => item.id ！==id的意思是：
+						//保留没被删除项的id，条件是不等于删除某一项的id
+						this.list = this.list.filter(item => item.id !==id)
+					},
+					add(){
+						if(!this.subject){
+							alert('请输入科目')
+							return
+						}
+						//如果出现不符合的科目输入结果，则跳出弹窗显示，成绩同理
+						if(typeof this.score !=='number'){
+							alert('请输入正确的成绩')
+							return
+						}
+						//往数组里面添加新的下标，前面加是unshift，
+						this.list.unshift({
+							id: +new Date(),
+							subject:this.subject,
+							score:this.score,
+						})
+						//每添加一次会清空输入框内容
+						this.subject =''
+						this.score=''
+					}
+				},
+				computed:{
+					TGP(){
+						//分数的总分语法
+return this.list.reduce((sum,item)=>sum + item.score,0)
+					},
+					GTP(){
+//当页面啥都没有，成绩没有，科目没有，那么总分和平均分应该为0，
+// 这条语句就是防止页面啥都没有时，可以不让成绩显示NaN
+						if(this.list.length === 0){
+							return 0
+						}
+						//总分除以数组的长度就是平均分，且保留两位小数
+						return (this.TGP / this.list.length).toFixed(2)
+					}
+				}
+			})
+
+	</script>
+</body>
+</html>

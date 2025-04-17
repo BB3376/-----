@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins',sans-serif;
+        }
+.service{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px 9%;
+    background: linear-gradient(to right,#e2e2e2,#c9d6ff);
+    color: #333;
+    text-align: center;
+
+}
+.service .heading{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.service .wrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+}
+.wrapper .box{
+    padding: 30px 20px;
+background: #fff;
+border-radius: 10px;
+transition: .5s;
+}
+.wrapper .box:hover{
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+}
+.box i{
+    font-size: 60px;
+    color: #7494ec;
+    transition: .5s;
+}
+.box i:hover{
+    background: transparent;
+    color: #0be2ff;
+}
+.box h2{
+    margin-bottom: 5px;
+    font-size: 25px;
+}
+.box p{
+    margin: 10px 0 18px;
+}
+.box .btn{
+    display: inline-block;
+    padding: 8px 20px;
+    background: #7494ec;
+    border: 2px solid #7494ec;
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+transition: .5s;
+}
+.box .btn:hover{
+    background: transparent;
+    color: #7494ec;
+}
+@media screen  and(max-width:992px){
+    .service{
+        padding: 20px 5%;
+    }
+}
+@media screen  and(max-width:350px){
+    .service .wrapper{
+        grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    }
+}
+    </style>
+</head>
+<body>
+    
+<section  class="service">
+    <h1 class="heading">My Services</h1>
+    <div class="wrapper">
+        <div class="box">
+            <i class='bx bx-code-alt'></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+        <div class="box">
+            <i class='bx bx-code' ></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+        <div class="box">
+            <i class='bx bxl-codepen' ></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+        <div class="box">
+            <i class='bx bx-code-curly' ></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+        <div class="box">
+            <i class='bx bx-edit-alt'></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+        <div class="box">
+            <i class='bx bx-search-alt-2'></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+        <div class="box">
+            <i class='bx bx-bell'></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+        
+        <div class="box">
+            <i class='bx bx-underline'></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+        <div class="box">
+            <i class='bx bxs-edit'></i>
+            <h2>Web Development</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. fugit,explicabo.</p>
+<a href="#" class="btn">Read More</a>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

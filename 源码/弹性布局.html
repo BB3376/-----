@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            font-size: larger;
+            font-weight: bolder;
+            line-height: 25vh;
+        }
+        .main{
+            margin: 5px auto;
+            background-color: orange;
+            border: 5px solid #e5030376;
+            height: 100%;
+            width: 1000px;
+            flex-direction: column;
+        }
+        .body div{
+            border: none;
+        }
+        .header{
+            background-color: rgb(43, 255, 0);
+            border: 2px solid #9f051a;
+            height: 15vh;
+        }
+        .body{
+            display: flex;
+            flex-direction: row;
+        }
+        .body .fixe1{
+            background-color: rgb(255, 0, 251);
+            border: 2px solid #f7f7f7;
+            height: 50vh;
+flex: 1;
+        }
+        .body .fixe2{
+            background-color: rgb(0, 8, 255);
+            border: 2px solid #8d9f05;
+            height: 50vh;
+flex: 6;
+        }
+        .foot{
+            display:flex;
+            flex-direction: row;
+        }
+        .foot .active{
+            border: 5px solid #000;
+            background: #f7f7f7;
+            height: 25vh;
+flex: 3;
+        }
+        .active1{
+            flex: 3;
+            border: 5px solid #000;
+            background: #f08484;
+        }
+        .active2{
+            flex: 4;
+            border: 5px solid #000;
+            background: #320404;
+        }
+      .foot2{
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      .foot2 .active1{
+        height: 25vh;
+      }
+      .foot1{
+        display: flex;
+        flex-direction: row;
+      }
+      
+       
+      
+      .foot1 .active4{
+       flex: 2;
+height: 25vh;
+        border: 5px solid #000;
+        background: #ff740a;
+      }
+      .foot0{
+        height: 25vh;
+        border: 5px solid #000;
+        background: #f80404;
+      }
+      .body .fixe3{
+        background-color: rgb(255, 0, 251);
+            border: 2px solid #f7f7f7;
+            height: 50vh;
+flex: 1;
+      }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+11
+        </div>
+        <div class="body">
+            <div class="fixe1">2</div>
+            <div class="fixe2">3</div>
+            <div class="fixe3">4</div>
+        </div>
+        <div class="foot0">
+            2
+        </div>
+        <div class="foot">
+            <div class="fixe4 active">4</div>
+            <div class="fixe5 active1">5</div>
+            <div class="fixe6 active2">6</div>
+           
+        </div>
+        <div class="foot1">
+            <div class="fixe3 active4">4</div>
+        <div class="fixe7 active4">5</div>
+        <div class="fixe8 active4">6</div>
+    </div>
+        <div class="foot2">
+            <div class="fixe4 active1">4</div>
+            <div class="fixe5 active1">5</div>
+            <div class="fixe6 active2">6</div>
+           
+        </div>
+    </div>
+</body>
+</html>

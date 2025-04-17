@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+      .tab_con{
+        width: 800px;
+        height: 350px;
+       margin: 50px auto 0;
+      }
+      .tab_btns{
+        height: 50px;
+      }
+      .tab_btns input{
+        width: 100px;
+        height: 50px;
+        background: #ddd;
+        border: 0px;
+        outline: none;
+      }
+      .tab_btns .active{
+        background: skyblue;
+        border-right:1px solid blue ;
+      }
+      .tab_cons{
+        position: relative;
+        bottom: 50px;
+        left: 100px;
+        height: 300px;
+        background: skyblue;
+        
+      }
+      .tab_cons div{
+        height: 300px;
+       
+        display: none;
+      }
+      .tab_cons .current{
+        display: block;
+      }
+      </style>
+</head>
+<body>
+    
+      <div id="app">
+        <div class="tab_con">
+          <div class="tab_btns">
+        <div><input type="button" value="按钮1" :class="{active:num==1}" @click="num=1"></div>
+        <div><input type="button" value="按钮2" :class="{active:num==2}" @click="num=2"></div>
+        <div><input type="button" value="按钮3" :class="{active:num==3}" @click="num=3"></div>  
+          </div>
+          <div class="tab_cons">
+            <div :class="{current:num==1}">按钮1对应的内容</div>
+            <div :class="{current:num==2}">按钮2对应的内容</div>
+            <div :class="{current:num==3}">按钮3对应的内容</div>
+          </div>
+         </div>
+       </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+num:1
+            },
+           
+            
+        })
+</script>
+</body>
+</html>

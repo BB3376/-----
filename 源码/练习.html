@@ -1,0 +1,131 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            background: linear-gradient(to top,#29323c,#485563);
+        }
+        .container{
+            width: 500px;
+            display: flex;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            color: #fff;
+            text-transform: uppercase;
+            perspective: 1300px;
+            font-weight: 300;
+        }
+        input{
+            display: none;
+        }
+        .labels{
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-right: 16px;
+        }
+        .tab{
+width: 100px;
+height: 80px;
+line-height: 80px;
+text-align: center;
+
+        }
+.tab:nth-child(1){
+    background-color: #00b4db;
+}
+.tab:nth-child(2){
+    background-color: #009bc5;
+}
+.tab:nth-child(3){
+    background-color: #007ba4;
+}
+.cube{
+    position: relative;
+    flex: 1;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in;
+}
+.tab-content{
+    width: 95%;
+    height: 230px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: red;
+}
+.tab-content h1{
+    font-style: 28px;
+    font-weight: 300;
+}
+.tab-content p{
+    font-style: 14px;
+    font-weight: 100;
+}
+.tab-content:nth-child(1){
+    background-color: #00b4db;
+    transform: rotateX(-270deg) translateY(-115px);
+    transform-origin: top center;
+}
+.tab-content:nth-child(2){
+    background-color: #00b4db;
+    transform: translateZ(115px);
+    
+}
+.tab-content:nth-child(3){
+    background-color: #007ba4;
+    transform: rotateX(-90deg) translateY(115px);
+    transform-origin: bottom center;
+}
+#tab_top:checked~.cube{
+    transform: rotateX(-90deg);
+}
+#tab_middle:checked~.cube{
+    transform: rotateX(0deg) translateY(10px);
+}
+#tab_bottom:checked~.cube{
+    transform: rotateX(90deg);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="radio" id="tab_top" name="tabs" checked>
+        <input type="radio" id="tab_middle" name="tabs">
+        <input type="radio" id="tab_bottom" name="tabs">
+        <div class="labels">
+            <label for="tab_top" class="tab">top</label>
+            <label for="tab_middle" class="tab">middle</label>
+            <label for="tab_bottom" class="tab">bottom</label>
+        </div>
+        <div class="cube">
+        <div class="tab-content">
+<h1>top content</h1>
+<p>this is top content</p>
+   </div>
+   <div class="tab-content">
+    <h1>middle content</h1>
+    <p>this is middle content</p>
+       </div>
+       <div class="tab-content">
+        <h1>bottom content</h1>
+        <p>this is bottom content</p>
+           </div>
+</div>
+
+    </div>
+</body>
+</html> -->

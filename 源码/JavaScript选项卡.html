@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竖着的选项卡</title>
+  <style>
+    /* 整体选项卡容器 */
+   .tab-container {
+      display: flex;
+      width: 600px;
+    }
+
+    /* 选项卡导航栏容器 */
+   .tab-nav {
+      width: 100px;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* 每个选项卡按钮 */
+   .tab-nav li {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* 激活状态的选项卡按钮 */
+   .tab-nav li.active {
+      background-color: white;
+      border-right: 2px solid blue;
+    }
+
+    /* 选项卡内容区域 */
+   .tab-content {
+      flex: 1;
+      padding: 10px;
+    }
+
+    /* 每个选项卡内容 */
+   .tab-content div {
+      display: none;
+    }
+
+    /* 显示激活的选项卡内容 */
+   .tab-content div.active {
+      display: block;
+    }
+    table{
+        border-collapse: collapse;
+    }
+    th{
+        padding: 5px 10px 5px 10px ;
+    }
+  </style>
+</head>
+
+<body>
+    <table border="1">
+<tr>
+    <th>网页的当前位置</th>
+</tr>
+<tr><td> <div class="tab-container">
+    <!-- 选项卡导航栏 -->
+    <ul class="tab-nav">
+      <li class="active" data-tab="tab1">选项卡1</li>
+      <li data-tab="tab2">选项卡2</li>
+      <li data-tab="tab3">选项卡2</li>
+      <li data-tab="tab4">选项卡2</li>
+      <li data-tab="tab5">选项卡2</li>
+    </ul>
+    <!-- 选项卡内容区域 -->
+    <div class="tab-content">
+      <div id="tab1" class="active">
+        这是竖着选项卡1的内容，你可以在这里添加各种信息。
+      </div>
+      <div id="tab2">
+        这是竖着选项卡2的内容，展示不同的信息内容。
+      </div>
+      <div id="tab3">
+        这是竖着选项卡3的内容，展示不同的信息内容。
+      </div>
+      <div id="tab4">
+        这是竖着选项卡4的内容，展示不同的信息内容。
+      </div>
+      <div id="tab5">
+        这是竖着选项卡5的内容，展示不同的信息内容。
+      </div>
+    </div>
+  </div></td></tr>
+    </table>
+  <!-- 选项卡整体容器 -->
+ 
+
+  <script>
+    // 获取所有选项卡按钮
+    const tabButtons = document.querySelectorAll('.tab-nav li');
+    // 获取所有选项卡内容
+    const tabContents = document.querySelectorAll('.tab-content div');
+
+    // 为每个选项卡按钮添加点击事件监听器
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        // 移除所有按钮的激活状态
+        tabButtons.forEach((btn) => btn.classList.remove('active'));
+        // 激活当前点击的按钮
+        button.classList.add('active');
+
+        // 移除所有内容的显示状态
+        tabContents.forEach((content) => content.classList.remove('active'));
+
+        // 显示对应内容
+        const targetTab = button.dataset.tab;
+        document.getElementById(targetTab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+
+</html>

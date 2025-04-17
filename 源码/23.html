@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+            list-style: none;
+            color: #060000;
+            text-align: left;
+        }
+       
+       li{ margin: 1px auto;
+      border-top:1px solid black ;
+      border-left:1px solid black ;
+      border-right: 1px solid black;
+        width: 800px;
+        height: 224px;
+       }
+        .border{
+            width: 790px;
+            height: 220px;
+           padding: 0;
+            background-color: white;
+         
+           
+        }
+        .top{  
+            width: 800px;
+            height: 200px;
+                  }
+      .left{
+        text-align: left;
+        float: left;
+      }
+      .right{
+        margin-left: 10px;
+        margin-top: 5px;
+        float: right;
+      }
+      .buttom{
+        margin-top: 5px;
+       float: left;
+       color: #323131;
+       font-weight: 100;
+       font-size: 13px;
+      }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <div>
+        <ul>
+            <li v-for="(item,index) in list" :key="item.id">
+                <div class="border">
+                    <div class="top">
+<div class="left">
+    <h4>{{item.title}}</h4>
+</div>
+<div class="right">
+    <img :src="item.img">
+</div>
+</div>
+<div class="buttom">
+   {{item.source}}&nbsp;{{item.time}}
+</div>
+                </div>
+            </li>
+           
+        </ul>
+       </div>
+         
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+               list:[
+
+               ]
+            },
+             //1.创建阶段：（准备数据）
+             beforeCreate(){
+                                      // 可以开始发送初始化渲染的请求了
+            },
+           async created(){
+            //1.发送请求，获取数据
+ const res = await axios.get('http://hmajax.itheima.net/api/news')
+           console.log(res)
+//2.将数据更新给data中的list
+this.list = res.data.data
+},
+              // 2.挂载阶段（渲染阶段）
+             beforeMount(){
+
+                   },
+             mounted(){
+              
+            },
+            //3.更新阶段(修改数据才会更新视图)
+            beforeUpdate(){
+
+         },
+           updated(){
+            },
+          //4.销毁阶段
+         beforeDestroy(){
+
+         },
+         destroyed(){
+
+         }
+        })
+            </script>
+                   </body>
+</html>

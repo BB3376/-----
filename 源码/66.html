@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #app{
+        display: flex;
+       }
+         .input[input]{
+          float: left;
+          margin-left: 10px;
+        }
+        input{
+            height: 25px;
+            border: 0.5px solid #000;
+            border-top-left-radius:6px ;
+            border-bottom-left-radius:6px ;
+        }
+        button{
+            border: 1px solid #000;
+            border-top-right-radius:6px ;
+            border-bottom-right-radius:6px ;
+            background-color: red;
+            color: white;
+            padding: 5px 15px;
+        }
+        .button{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<div class="input">
+    <button>搜索一下</button>
+    <div class="button">
+        <input type="text" v-model="words" id="inp"> 
+    </div>
+</div>
+
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+         const app = new Vue({
+            el:'#app',
+            data:{
+words:''
+            },
+            //1.等输入框渲染出来，让输入框获取焦点
+            mounted(){
+//console.log(document.querySelector('#inp'))
+document.querySelector('#inp').focus()
+            }
+         })
+    </script>
+</body>
+</html>

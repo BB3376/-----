@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+    
+        body {
+            background: #0a0a2e;
+            min-height: 100vh;
+            padding: 3rem 2rem;
+            color: #f8fafc;  /* 全局文字颜色 */
+            line-height: 1.6;  /* 提升可读性 */
+        }
+    
+        /* 板块容器 */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);  /* 增加边框可见性 */
+        }
+    
+        /* 板块标题 */
+        .section-title {
+            color: #ffffff;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid;
+            display: inline-block;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.25);  /* 文字阴影增强 */
+            font-weight: 600;
+        }
+    
+        /* 不同板块颜色主题 */
+        .section-1 .section-title { border-color: #9a6bfe; }  /* 调整紫色更明显 */
+        .section-2 .section-title { border-color: #00ff88; }  /* 调整绿色亮度 */
+        .section-3 .section-title { border-color: #ff79c6; }  /* 调整粉色饱和度 */
+    
+        /* 区块网格布局 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+    
+        /* 区块卡片样式 */
+        .block-card {
+            background: linear-gradient(145deg, 
+                rgba(255,255,255,0.12), 
+                rgba(255,255,255,0.08));
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: transform 0.3s ease, 
+                        box-shadow 0.3s ease;
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .block-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+        }
+    
+        /* 区块标题样式 */
+        .block-title {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+            letter-spacing: 0.5px;  /* 增加字间距 */
+        }
+    
+        /* 装饰性渐变背景 */
+        .block-card::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, 
+                rgba(154,107,254,0.2) 0%,  /* 同步调整颜色 */
+                rgba(100,70,200,0.1) 100%);
+            transform: rotate(45deg);
+            top: -25%;
+            left: -25%;
+            z-index: 1;
+        }
+    
+ /* 修改原有区块颜色定义 */
+.block-card:nth-child(1)::before {
+    background: linear-gradient(45deg, 
+        rgba(255, 0, 0, 0.2) 0%,     /* 红色系 */
+        rgba(255, 60, 0, 0.15) 100%);
+}
+
+.block-card:nth-child(2)::before {
+    background: linear-gradient(45deg, 
+        rgba(255, 165, 0, 0.2) 0%,  /* 橙色系 */
+        rgba(255, 140, 0, 0.15) 100%);
+}
+
+.block-card:nth-child(3)::before {
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 0, 0.2) 0%,  /* 黄色系 */
+        rgba(230, 230, 0, 0.15) 100%);
+}
+
+.block-card:nth-child(4)::before {
+    background: linear-gradient(45deg, 
+        rgba(0, 255, 0, 0.2) 0%,    /* 绿色系 */
+        rgba(0, 200, 0, 0.15) 100%);
+}
+
+.block-card:nth-child(5)::before {
+    background: linear-gradient(45deg, 
+        rgba(0, 255, 255, 0.2) 0%,  /* 青色系 */
+        rgba(0, 200, 200, 0.15) 100%);
+}
+
+.block-card:nth-child(6)::before {
+    background: linear-gradient(45deg, 
+        rgba(0, 0, 255, 0.2) 0%,    /* 蓝色系 */
+        rgba(0, 0, 200, 0.15) 100%);
+}
+
+.block-card:nth-child(7)::before {
+    background: linear-gradient(45deg, 
+        rgba(75, 0, 130, 0.2) 0%,   /* 靛色系 */
+        rgba(60, 0, 100, 0.15) 100%);
+}
+
+.block-card:nth-child(8)::before {
+    background: linear-gradient(45deg, 
+        rgba(238, 130, 238, 0.2) 0%,/* 紫色系 */
+        rgba(200, 100, 200, 0.15) 100%);
+}
+/* 在原有代码后追加以下规则 */
+.block-card:nth-child(9)::before {
+    background: linear-gradient(45deg, 
+        rgba(128, 0, 128, 0.2) 0%,     /* 紫色系 */
+        rgba(100, 0, 100, 0.15) 100%);
+}
+
+.block-card:nth-child(10)::before {
+    background: linear-gradient(45deg, 
+        rgba(255, 192, 203, 0.2) 0%,  /* 粉色系 */
+        rgba(230, 170, 180, 0.15) 100%);
+}
+
+.block-card:nth-child(11)::before {
+    background: linear-gradient(45deg, 
+        rgba(165, 42, 42, 0.2) 0%,    /* 棕色系 */
+        rgba(140, 35, 35, 0.15) 100%);
+}
+
+.block-card:nth-child(12)::before {
+    background: linear-gradient(45deg, 
+        rgba(0, 128, 128, 0.2) 0%,   /* 青色系 */
+        rgba(0, 100, 100, 0.15) 100%);
+}
+    
+        /* 下载项样式 */
+        .download-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            background: rgba(255,255,255,0.08);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            color: #e2e8f0;  /* 浅灰色文字 */
+            font-weight: 400;
+        }
+    
+        .download-item:hover {
+            background: rgba(247,250,252,0.9);
+            transform: translateX(10px);
+            color: #1a202c;  /* 悬停深色文字 */
+        }
+    
+        .download-item::before {
+            content: '➤';
+            margin-right: 12px;
+            font-weight: 700;
+            color: inherit;  /* 继承当前颜色 */
+            background: rgba(255,255,255,0.15);
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+    
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+            
+            .block-card {
+                min-height: 180px;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1.5rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .block-card {
+                min-height: auto;
+                padding: 1.2rem;
+            }
+        }
+    
+        /* 新增文字强化效果 */
+        .download-item:hover::before {
+            background: rgba(0,0,0,0.1);  /* 悬停时按钮背景变化 */
+        }
+    
+        .block-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 30px;
+            height: 2px;
+            background: rgba(255,255,255,0.3);  /* 标题下划线 */
+        }
+        
+    
+    </style>
+</head>
+<body>
+    <!-- 提示板块 -->
+    <section class="section section-2">
+        <h2 class="section-title">温馨提示</h2>
+        <p>
+            1.此网站上的资源多数来自于互联网
+        </p>
+        <p>2.所有链接均为网盘或github,网盘链接随时可能和谐,请及时保存</p>
+        <p>3.软件教程可查看:B站疯狂的杨CC,或公众号:SGY安全</p>
+        <p>4.投稿请联系微信:Yancy_76或QQ:323002946</p>
+    </section>
+    <!-- 板块1 -->
+    <section class="section section-1">
+        <h2 class="section-title">渗透资源板块</h2>
+        <div class="grid-container">
+            <div class="block-card">
+                <h3 class="block-title">信息搜集工具(1)</h3>
+                <a href="https://pan.quark.cn/s/9cb00e4b0ba5"><div class="download-item">ESP-端口类工具</div></a>
+                <a href="https://pan.quark.cn/s/8aabfc26dd93"><div class="download-item">Virgol-综合类工具</div></a>
+                <a href="https://github.com/GhostTroops/scan4all"><div class="download-item">scan4all-1.5W poc扫描工具</div></a>
+                <a href="https://github.com/owasp-amass/amass"><div class="download-item">amass-信息收集类工具</div></a>
+                <a href="https://github.com/perlh/hscan"><div class="download-item">hscan-资产测绘/漏扫</div></a>
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">信息搜集工具(2)</h3>
+                <a href="https://github.com/niudaii/zpscan"><div class="download-item">zpscan-信息收集类工具</div></a>
+                <a href="https://github.com/M0nster3/OneLong"><div class="download-item">OneLong-企业信息收集</div></a>
+                <a href="https://github.com/jammny/jws-cli"><div class="download-item">JWS-CLI-自动化信息收集工具</div></a>
+                <a href="https://github.com/selinuxG/Golin"><div class="download-item">Golin-一体化漏扫工具</div></a>
+                <a href="https://github.com/jekyc/wig"><div class="download-item">wig-指纹识别工具</div></a>
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">信息搜集工具(3)</h3>
+                <a href="https://github.com/P001water/P1finger"><div class="download-item">P1finger-资产指纹识别</div></a>
+                <a href="https://github.com/qianxiao996/FrameScan-GUI"><div class="download-item">FrameScan-GUi-可视化指纹识别</div></a>
+                <a href="http://finger.tidesec.com/"><div class="download-item">潮汐-指纹识别(在线)</div></a>
+                <!-- <h3 class="block-title">信息搜集工具(3)</h3> -->
+            </div>
+
+            <div class="block-card">
+
+                <h3 class="block-title">SQL注入</h3>
+                <a href="https://pan.quark.cn/s/2ec869b9d849"><div class="download-item">阿D注入包(可视化)</div></a>
+                <a href="https://pan.quark.cn/s/d3bfc5edf216"><div class="download-item">sqlmap 1.7.1汉化版</div></a>
+                <a href="https://github.com/co01cat/SqlmapXPlus"><div class="download-item">sqlmap X Plus</div></a>
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">远控</h3>
+                <a href="https://pan.quark.cn/s/7fad02472d15"><div class="download-item">quasar-V1.4(内部版本)</div></a>
+                <a href="https://pan.quark.cn/s/45224d5b781b"><div class="download-item">大灰狼</div></a>
+                <a href="https://pan.quark.cn/s/ffa083815b9e"><div class="download-item">冰山3.1</div></a>
+                <a href="https://pan.quark.cn/s/7222f5f04b96"><div class="download-item">cs4.9.1</div></a>
+                <!-- <div class="download-item">特效素材</div> -->
+            </div>
+
+            <div class="block-card">
+                <h3 class="block-title">逆向工具</h3>
+                <a href="https://pan.quark.cn/s/9372b80bf87d"><div class="download-item">010 Editor-破解版-汉化版</div></a>
+                <a href="https://github.com/WerWolv/ImHex"><div class="download-item">ImHex-逆向神器</div></a>
+                <a href="https://github.com/liaojack8/AndroidKiller"><div class="download-item">Android killer 安卓逆向</div></a>
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">漏扫\利用</h3>
+                <a href="https://github.com/swisskyrepo/SSRFmap"><div class="download-item">SSRF-扫描与利用工具</div></a>
+                <a href="https://github.com/dahezhiquan/FindUpload/"><div class="download-item">FindUpload-上传\登陆点扫描工具</div></a>
+                <!-- <a href="https://pan.quark.cn/s/7222f5f04b96"><div class="download-item">cs4.9.1</div></a> -->
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">内网工具</h3>
+                <a href="https://github.com/shadow1ng/fscan"><div class="download-item">fscan-横向神器2.0</div></a>
+                <a href="https://github.com/M0nster3/OneLong"><div class="download-item">fscan-横向神器2.0(汉化版)</div></a>
+                <a href="https://github.com/carlospolop/PEASS-ng"><div class="download-item">PEASS-ng-全系统提权工具</div></a>
+                <a href="https://github.com/DeEpinGh0st/MDUT-Extend-Release"><div class="download-item">MDUT-Extend-数据库提权工具</div></a>
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">爆破工具</h3>
+                <a href="https://github.com/pagvac/dnsmap"><div class="download-item">dnsmap-子域名爆破</div></a>
+                <a href="https://github.com/Chora10/FuzzDomain"><div class="download-item">FuzzDomain-可视化子域名爆破</div></a>
+                <!-- <a href="https://github.com/carlospolop/PEASS-ng"><div class="download-item">PEASS-ng-全系统提权工具</div></a>
+                <a href="https://github.com/DeEpinGh0st/MDUT-Extend-Release"><div class="download-item">MDUT-Extend-数据库提权工具</div></a> -->
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">字典</h3>
+                <a href="https://pan.quark.cn/s/1ca1bffed51f"><div class="download-item">字典生成器1</div></a>
+                <!-- <a href="https://github.com/Chora10/FuzzDomain"><div class="download-item">FuzzDomain-可视化子域名爆破</div></a> -->
+                <!-- <a href="https://github.com/carlospolop/PEASS-ng"><div class="download-item">PEASS-ng-全系统提权工具</div></a>
+                <a href="https://github.com/DeEpinGh0st/MDUT-Extend-Release"><div class="download-item">MDUT-Extend-数据库提权工具</div></a> -->
+            </div>
+            <div class="block-card">
+                <h2 class="block-title">在线Whois工具</h2>
+                <a href="https://whois.aizhan.com/"><div class="download-item">Whois-查询-站长-web</div></a>
+                <a href="https://whois.aliyun.com/"><div class="download-item">Whois-查询-万网-web</div></a>
+                <a href="https://github.com/Chora10/FuzzDomain"><div class="download-item">FuzzDomain-可视化子域名爆破</div></a>
+                <a href="https://github.com/carlospolop/PEASS-ng"><div class="download-item">PEASS-ng-全系统提权工具</div></a>
+                <a href="https://github.com/DeEpinGh0st/MDUT-Extend-Release"><div class="download-item">MDUT-Extend-数据库提权工具</div></a>
+                <h3 class="block-title">在线ip查询</h3>
+                <a href="https://chapangzhan.com/"><div class="download-item">ip旁站查询</div></a>
+                <a href="https://www.dnsgrep.cn/ip"><div class="download-item">ip反查域名</div></a>
+                <a href="https://beian.miit.gov.cn/#/Integrated/index"><div class="download-item">ip/域名备案查询</div></a>
+                <a href="https://whois.aliyun.com/"><div class="download-item">Whois-查询-万网-web</div></a>
+                <h3 class="block-title">在线资产测绘</h3>
+                <a href="http://finger.tidesec.com/"><div class="download-item">潮汐-指纹识别</div></a>
+                <a href="https://www.zoomeye.org/"><div class="download-item">钟馗之眼</div></a>
+                <a href="https://www.shodan.io/"><div class="download-item">撒旦资产测绘</div></a>
+                <a href="https://www.daydaymap.com/home"><div class="download-item">DayDayMap</div></a>
+
+            </div>
+
+            <div class="block-card">
+                <h3 class="block-title">工具箱</h3>
+                <a href="https://github.com/BlackINT3/OpenArk"><div class="download-item">OpenArk-蓝队应急工具箱</div></a>
+                <a href="https://github.com/M0nster3/OneLong"><div class="download-item">OneLong-企业信息收集</div></a> 
+                <a href="https://pan.quark.cn/s/5277d73f9baa"><div class="download-item">大白哥私人免杀</div></a>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- 板块2 -->
+    <section class="section section-2">
+        <h2 class="section-title">其他板块资源</h2>
+        <div class="grid-container">
+            <div class="block-card">
+                <h3 class="block-title">源码板块</h3>
+                <a href="https://pan.quark.cn/s/6eba302cbfc7"><div class="download-item">时钟源码</div></a>
+                <a href="https://pan.quark.cn/s/f92f759ef6a8"><div class="download-item">你可以做我恋人吗?源码</div></a>
+                <a href="https://pan.quark.cn/s/d95cfe5befee"><div class="download-item">3D相册源码</div></a>
+                <!-- <div class="download-item">CSS框架</div> -->
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">破解资源</h3>
+                <a href="https://pan.quark.cn/s/314c719ccdb7"><div class="download-item">JetBrains全家桶激活补丁-支持三系统</div></a>
+                <a href="https://pan.quark.cn/s/751cb824d695"><div class="download-item">navicat Premium,16.3. 破解版+补丁包</div></a>
+                <a href="https://pan.quark.cn/s/26155758a06f"><div class="download-item">全版本Windows/Office激活工具</div></a>
+                <!-- <a href="https://pan.quark.cn/s/136908fc6077"><div class="download-item">JetBrains全家桶激活补丁-支持三系统</div></a> -->
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">学习资料</h3>
+                <a href="https://pan.quark.cn/s/2f6e4340514b"><div class="download-item">暗月内部学院资料</div></a>
+                <!-- <div class="download-item">Swift库</div>
+                <div class="download-item">Kotlin扩展</div> -->
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">其他资料或者文章</h3>
+                <a href="https://pan.quark.cn/s/444802dcf0f0"><div class="download-item">360关闭所有广告</div></a>
+                <!-- <div class="download-item">调试工具</div>
+                <div class="download-item">部署脚本</div> -->
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">单机游戏板块</h3>
+                <a href="https://pan.quark.cn/s/e50b30c48710"><div class="download-item">虐杀原形1完美Win10\11完美运行版</div></a>
+                <a href="https://pan.quark.cn/s/794f39903510"><div class="download-item">虐杀原形2完美带存档\修改器</div></a>
+                <a href="https://pan.quark.cn/s/0ef6f740391b"><div class="download-item">90+版本的植物大战僵尸</div></a>
+                <!-- <div class="download-item">部署脚本</div> -->
+            </div>
+            <div class="block-card">
+                <h3 class="block-title">优质公众号板块</h3>
+                <a href="http://weixin.qq.com/r/mp/ghNkfKnEKPRXre0f90aQ"><div class="download-item">SGY安全</div> </a>
+                <a href="#"><div class="download-item">招收中...</div></a>
+                <!-- <div class="download-item">调试工具</div>
+                <div class="download-item">部署脚本</div> -->
+            </div>
+        </div>
+    </section>
+    <div class="xl-chrome-ext-bar_4DB361DE-01F7-4376-B494-639E489D19ED" id="xl_chrome_ext_4DB361DE-01F7-4376-B494-639E489D19ED" data-v-app="" style="display: block;"><div class=""><div id="xl_chrome_ext_video_tag_wrapper_4DB361DE-01F7-4376-B494-639E489D19ED" config="[object Object]" uiversion="v2" exception="false" latestvideosrc="" isshowvideotag="false" isshowdownloadbar="true" isshowcloudaddbar="false"><div class="_video_op_wrapper_96mx8_1" config="[object Object]" uiversion="v2" style="display: none;"><ul class="_video_op_list_96mx8_17"><li class="_op_item_96mx8_39 _download_96mx8_45"><span class="_op_icon_96mx8_25"></span><span class="_op_text_96mx8_31">下载</span></li><li class="_op_item_96mx8_39 _screen_96mx8_51"><span class="_op_icon_96mx8_25"></span><span class="_op_text_96mx8_31">投屏</span></li></ul></div></div><div class="badge_wrapper_4DB361DE-01F7-4376-B494-639E489D19ED _badge_wrapper_eor63_1" id="badge_wrapper_4DB361DE-01F7-4376-B494-639E489D19ED"><div class="_logo_eor63_20"></div><span class="_line_eor63_27"></span><div class="_text_wrapper_eor63_33"><span class="_download_icon_eor63_39"></span><span class="_text_eor63_33">高速下载</span>
+    </div></div><!----><!----><!----><!----><div class="_container_wq4mj_4"><!----></div></div></div>
+</body>
+</html>

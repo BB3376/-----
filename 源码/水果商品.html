@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ty{
+            padding: 5px 25px;
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+.only-lines {
+    border-collapse:collapse ;
+    width: 100%;
+    border-right:1px solid #000 ;
+    border-left: 1px solid #000;
+    border-top: none;
+    border-bottom: none;
+}
+.only-lines td ,.only-lines th{
+border-top: 1px solid #000;
+border-bottom: 1px solid #000;
+border-left: none;
+border-right: none;
+padding: 10px 25px;
+text-align: center;
+}
+.ioi{
+    background-color: red;
+    color: white;
+    border: 0.5px solid #000;
+    padding: 10px 25px;
+}
+tr:hover{
+    background-color: aquamarine;
+}
+.ss td{
+    height: 60px;
+    color: rgb(75, 70, 70);
+    text-align: center;
+    font-size: larger;
+    padding: 20px 50px ;
+}
+    </style>
+</head>
+<body>
+    <div id="app">
+      <table  class="only-lines">
+       <thead> <tr>
+        <th>选中</th>
+        <th>图片</th>
+        <th>单价</th>
+        <th>个数</th>
+        <th>小计</th>
+        <th>操作</th>
+    </tr>
+</thead>
+      <tbody v-if="fruitlist.length > 0">
+        <tr v-for="(item,index) in fruitlist" :key="item.id">
+            <td><input type="checkbox" v-model="item.isChecked"></td>
+            <td><img :src="item.imges" alt="" width="50px" height="50px"></td>
+            <td>{{item.price}}</td>
+            <!--disabled是禁用的意思，用来禁用按钮之类的，如果值为true是禁用，flase是解除-->
+            <td><button :disabled="item.num <= 1" @click="sub(item.id)">-</button>
+                <span>{{item.num}}</span>
+                <button @click="add(item.id)">+</button>
+            </td>
+            <td>{{item.num*item.price}}</td>
+            <td><button class="ioi" @click="del(item.id)">删除</button></td>
+        </tr>
+      </tbody>
+     
+      <tbody v-else class="ss">
+        <tr>
+            <td colspan="6">
+                空空如也
+            </td>
+           
+           
+        </tr>
+      </tbody>
+      <tbody>
+        <td><input type="checkbox" colspan="4" v-model="isall">全选</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            总价：{{totalprice}}￥
+        </td>
+        <td>
+            <button class="ty" >结算({{totalcount}})</button>
+        </td>
+      </tbody>
+      </table>
+     
+</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const defaultArr = [
+        {id:1,
+           imges:'/img/011.jpg',
+            isChecked:true,
+            num:1,
+            price:6,
+           
+        },
+        {id:2,
+           imges:'/img/222.jpg',
+            isChecked:false,
+            num:1,
+            price:20,
+           
+        },
+        {id:3,
+           imges:'/img/0333.jpg',
+            isChecked:true,
+            num:1,
+            price:18,
+         
+        },
+        {id:4,
+           imges:'/img/1212.jpg',
+            isChecked:true,
+            num:1,
+            price:99,
+         
+        },
+        {id:5,
+           imges:'/img/5254.avif',
+            isChecked:true,
+            num:1,
+            price:35,
+         
+        },
+        {id:6,
+           imges:'/img/897.jpg',
+            isChecked:true,
+            num:1,
+            price:45,
+         
+        }
+        ]
+const app = new Vue({
+    el:'#app',
+    data:{
+    fruitlist:JSON.parse(localStorage.getItem('list')) || defaultArr,
+
+    },
+
+    methods:{
+del(id){
+    this.fruitlist = this.fruitlist.filter(item => item.id !==id )
+},
+add(id){
+const fruit = this.fruitlist.find(item => item.id === id)
+fruit.num++
+
+},
+sub(id){
+    const fruit = this.fruitlist.find(item => item.id === id)
+fruit.num--
+}
+
+    },
+    computed:{
+        //默认计算属性：
+        // 只能获取不能设置，要设置需要写完整写法
+// isall() {
+//     //必须所有的小选框都选中，全选按钮才选中，用every
+//     return this.fruitlist.every(item => item.isChecked === true)
+// }
+ //完整写法=get+set
+ isall:{
+    get(){
+        return this.fruitlist.every(item => item.isChecked === true)
+    },
+    set(value){
+        //基于拿到的布尔值，要让所有的小选框 同步状态用 foreach
+this.fruitlist.forEach(item => item.isChecked = value) 
+    },
+   
+ },
+ //统计选中的总数用reduce
+ totalcount(){
+       return this.fruitlist.reduce(
+        (sum,item)=> {
+            if(item.isChecked){
+                //选中需要累加的
+                return sum + item.num
+            }else{
+                return sum
+                //没选中不需要累加
+            }
+        },0) 
+    },
+    //统计选中的总价 num*price
+    totalprice(){
+return this.fruitlist.reduce((sum,item)=>{
+    if(item.isChecked){
+return sum +item.num*item.price
+    }else{
+return sum
+    }
+}
+,0)
+    }
+    },
+    watch: {
+fruitlist: {
+    deep:true,
+handler(newvalue){
+//需要将变化后的newvalue 存入本地（json)
+localStorage.setItem('list',JSON.stringify(newvalue))
+}
+}
+    }})
+    </script>
+    <!--
+    购物车案例：
+    要求说明；
+    1.渲染功能：v-if/v-else v-for :class
+    2.删除功能:点击传参 filter过滤覆盖原数组
+    3.修改个数：修改个数：点击传参 find找对象
+    4.全选反选：看到全选反选用计算属性computed 
+    完整写法 get/setget/set
+    5。统计“选中”的总价和数量：计算属性computed reduce条件求和
+    6.持久化到本地：watch监视，localStorage,JSON.stringify,JSON.parse
+    
+    -->
+</body>
+</html>
